@@ -1,0 +1,23 @@
+@if(cityWeather(); as cityWeather){ @if(index();as index){
+<div class="card-box">
+  <div class="main-con">
+    <img
+      src="{{
+        'http://openweathermap.org/img/wn/' + cityWeather.icon + '@2x.png'
+      }}"
+      alt="Weather icon"
+      class="card-box__img"
+    />
+
+    <div class="text-inside">
+      <span>{{ cityWeather.temp }}</span>
+      <div>
+        <span> {{ "H:" + cityWeather.temp_max }}</span>
+        <span> {{ "L:" + cityWeather.temp_min }}</span>
+      </div>
+      <span>{{ cityWeather.name }}</span>
+    </div>
+  </div>
+  <button class="delete-btn" (click)="deleteCity(index)">usun</button>
+</div>
+} }

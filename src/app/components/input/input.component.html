@@ -1,0 +1,11 @@
+<div class="input-container">
+  <label class="label">{{ "Dodaj miasto" }}</label>
+  <input
+    #input
+    [value]="value"
+    class="input"
+    #ref
+    (input)="onValueChange(ref.value)"
+  />
+  <!-- <img [src]="icon" alt="icon" /> -->
+</div>

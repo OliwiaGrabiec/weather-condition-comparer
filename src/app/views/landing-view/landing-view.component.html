@@ -1,0 +1,13 @@
+<form class="form" (submit)="$event.preventDefault(); save()">
+  <app-input [formControl]="cityNameControl"></app-input>
+</form>
+
+<div class="card-container">
+  @for(cityWeather of cityWeatherList$ | async; track cityWeather; let index =
+  $index) {
+  <app-weather-card
+    [cityWeather]="cityWeather"
+    [index]="index"
+  ></app-weather-card>
+  }
+</div>

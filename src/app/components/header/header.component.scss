@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  max-width: 2000px;
+  top: 0px;
+  z-index: 2;
+  position: sticky;
+  background-color: orange;
+
+  .title {
+    padding: 20px 10px;
+  }
+}

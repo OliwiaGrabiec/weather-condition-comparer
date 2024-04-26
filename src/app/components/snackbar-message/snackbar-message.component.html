@@ -1,0 +1,5 @@
+@if(errorMessage$ | async; as errorMessage) { @if(errorMessage !== '') {
+<div class="snackbar">
+  <span>{{ errorMessage }}</span>
+</div>
+} }
