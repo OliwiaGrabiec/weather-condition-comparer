@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { RouterOutlet } from "@angular/router";
 import { InputComponent } from "@app/components/input/input.component";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import {
   CityWeather,
   CityWeatherStoreService,
@@ -26,16 +26,27 @@ import { WeatherCardComponent } from "./weather-card/weather-card.component";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LandingViewCompnent {
+  protected isCel: boolean = true;
   protected readonly cityNameControl = new FormControl<string>("", {
     nonNullable: true,
   });
-  protected readonly cityWeatherList$: Observable<CityWeather[]>;
+  protected cityWeatherList$: Observable<CityWeather[]>;
 
   constructor(
     private readonly coordsStore: CoordsStoreService,
     private readonly cityWeatherStore: CityWeatherStoreService
   ) {
     this.cityWeatherList$ = this.cityWeatherStore.cityWeatherList$;
+  }
+
+  public sortByTemperature(ascending: boolean) {
+    this.cityWeatherStore.cityWeatherList$.subscribe((cityWeatherList) => {
+      const sortedList = cityWeatherList.slice().sort((a, b) => {
+        return ascending ? a.temp - b.temp : b.temp - a.temp;
+      });
+
+      this.cityWeatherList$ = of(sortedList);
+    });
   }
 
   protected save(): void {
@@ -46,4 +57,10 @@ export class LandingViewCompnent {
   // protected deleteCity(index: number) {
   //   this.coordsStore.deleteCoordBy(index);
   // }
+  protected isCelc(): void {
+    this.isCel = true;
+  }
+  protected isFahs(): void {
+    this.isCel = false;
+  }
 }

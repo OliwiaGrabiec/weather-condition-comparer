@@ -1,4 +1,4 @@
-import { ErrorHandler, inject } from "@angular/core";
+import { ErrorHandler, NgZone, inject } from "@angular/core";
 import { ErrorMessageHandlerService } from "./error-message-handler.servce";
 
 type ErrorType = "DEV" | "USER";
@@ -12,9 +12,13 @@ export class CustomError {
 
 export class ErrorHandlerService implements ErrorHandler {
   private readonly messageHandler = inject(ErrorMessageHandlerService);
-  constructor() {}
+  private readonly ngZone = inject(NgZone);
 
   handleError(error: CustomError) {
+    this.ngZone.runTask(() => this.procedures(error));
+  }
+
+  private procedures(error: CustomError): void {
     if (!(error instanceof CustomError)) {
       console.log(`Error`, error);
       this.messageHandler.errorMessage = "Błąd serwera";

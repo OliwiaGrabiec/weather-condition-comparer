@@ -22,7 +22,7 @@ export class WeatherApiService extends ApiService {
 
   public getWeatherOf$({ lat, lon }: Coord) {
     return this.get$<CityWeatherResponse>(
-      `data/2.5/weather?lat=${lat}&lon=${lon}&appid=${environment.token}`
+      `data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${environment.token}`
     );
   }
 }

@@ -1,11 +1,7 @@
 import { CommonModule } from "@angular/common";
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-} from "@angular/core";
+import { ChangeDetectionStrategy, Component, Signal } from "@angular/core";
 import { ErrorMessageHandlerService } from "@app/services/error-message-handler.servce";
-import { Observable, tap } from "rxjs";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-snackbar-message",
@@ -17,13 +13,9 @@ import { Observable, tap } from "rxjs";
 })
 export class SnackbarMessageComponent {
   protected readonly errorMessage$: Observable<string>;
+  protected readonly errorMessage: Signal<string>;
 
-  constructor(
-    private readonly snackbarMessage: ErrorMessageHandlerService,
-    private readonly cd: ChangeDetectorRef
-  ) {
-    this.errorMessage$ = this.snackbarMessage.errorMessage$.pipe(
-      tap((com) => console.log("called", com))
-    );
+  constructor(private readonly snackbarMessage: ErrorMessageHandlerService) {
+    this.errorMessage$ = this.snackbarMessage.errorMessage$;
   }
 }

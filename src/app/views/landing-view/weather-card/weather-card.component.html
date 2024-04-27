@@ -10,10 +10,28 @@
     />
 
     <div class="text-inside">
-      <span>{{ cityWeather.temp }}</span>
+      <span>{{
+        isCel()
+          ? cityWeather.temp.toFixed(0)
+          : ((cityWeather.temp * 9) / 5 + 32).toFixed(0)
+      }}</span>
       <div>
-        <span> {{ "H:" + cityWeather.temp_max }}</span>
-        <span> {{ "L:" + cityWeather.temp_min }}</span>
+        <span>
+          {{
+            "H: " +
+              (isCel()
+                ? cityWeather.temp_max.toFixed(0)
+                : ((cityWeather.temp_max * 9) / 5 + 32).toFixed(0))
+          }}</span
+        >
+        <span>
+          {{
+            "L: " +
+              (isCel()
+                ? cityWeather.temp_min.toFixed(0)
+                : ((cityWeather.temp_min * 9) / 5 + 32).toFixed(0))
+          }}</span
+        >
       </div>
       <span>{{ cityWeather.name }}</span>
     </div>

@@ -2,12 +2,23 @@
   <app-input [formControl]="cityNameControl"></app-input>
 </form>
 
+<div class="btn-container">
+  <button (click)="isCelc()" class="btn">C</button>
+  <button (click)="isFahs()" class="btn">F</button>
+</div>
+
+<div class="btn-container">
+  <button (click)="sortByTemperature(true)">Sort Ascending</button>
+  <button (click)="sortByTemperature(false)">Sort Descending</button>
+</div>
+
 <div class="card-container">
   @for(cityWeather of cityWeatherList$ | async; track cityWeather; let index =
   $index) {
   <app-weather-card
     [cityWeather]="cityWeather"
     [index]="index"
+    [isCel]="isCel"
   ></app-weather-card>
   }
 </div>
