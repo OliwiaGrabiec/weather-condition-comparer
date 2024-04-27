@@ -17,9 +17,9 @@ import { CityWeather } from "../../../services/city-weather-store.service";
   imports: [CommonModule],
 })
 export class WeatherCardComponent {
-  public cityWeather = input<CityWeather>();
-  public index = input<number>();
-  public isCel = input<boolean>(true);
+  public cityWeather = input.required<CityWeather>();
+  public index = input.required<number>();
+  public isCel = input.required<boolean>();
 
   constructor(private readonly coordsStore: CoordsStoreService) {}
 

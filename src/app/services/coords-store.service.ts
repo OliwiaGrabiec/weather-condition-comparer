@@ -52,6 +52,7 @@ export class CoordsStoreService {
 
         // TODO: check duplicates
         this.coords = { lat: coords[0].lat, lon: coords[0].lon };
+        console.log(this.coords);
       })
     );
   }

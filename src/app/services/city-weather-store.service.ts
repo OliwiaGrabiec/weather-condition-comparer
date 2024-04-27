@@ -71,6 +71,14 @@ export class CityWeatherStoreService {
     );
   }
 
+  public sortWeatherByTemp(ascending: boolean): void {
+    const soredtab = this.cityWeatherStore$.value.sort((a, b) => {
+      return ascending ? a.temp - b.temp : b.temp - a.temp;
+    });
+    console.log(this.cityWeatherStore$.value);
+    this.cityWeatherStore$.next([...this.cityWeatherStore$.value]);
+  }
+
   public set cityWeather(cityWeather: CityWeather) {
     this.cityWeatherStore$.next([...this.cityWeatherStore$.value, cityWeather]);
   }

@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { RouterOutlet } from "@angular/router";
 import { InputComponent } from "@app/components/input/input.component";
-import { Observable, of } from "rxjs";
+import { Observable, of, tap } from "rxjs";
 import {
   CityWeather,
   CityWeatherStoreService,
@@ -40,23 +40,19 @@ export class LandingViewCompnent {
   }
 
   public sortByTemperature(ascending: boolean) {
-    this.cityWeatherStore.cityWeatherList$.subscribe((cityWeatherList) => {
-      const sortedList = cityWeatherList.slice().sort((a, b) => {
-        return ascending ? a.temp - b.temp : b.temp - a.temp;
-      });
-
-      this.cityWeatherList$ = of(sortedList);
-    });
+    this.cityWeatherStore.sortWeatherByTemp(ascending);
   }
 
   protected save(): void {
     this.coordsStore
       .setCoordBy$(this.cityNameControl.value)
-      .subscribe(() => this.cityNameControl.reset());
+      .subscribe(() => this.cityNameControl.reset(""));
   }
+
   // protected deleteCity(index: number) {
   //   this.coordsStore.deleteCoordBy(index);
   // }
+
   protected isCelc(): void {
     this.isCel = true;
   }

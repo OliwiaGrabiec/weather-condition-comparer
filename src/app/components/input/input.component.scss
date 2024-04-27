@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid orange;
+    border: 2px solid rgb(163, 102, 255);
     border-radius: 10px;
     position: relative;
   }
@@ -26,12 +26,10 @@
     padding-right: 4px;
     background-color: white;
     user-select: none;
-    color: orange;
+    color: rgb(163, 102, 255);
   }
 
   .icon {
-    width: 18px;
-    height: 18px;
     margin-right: 5px;
   }
 }

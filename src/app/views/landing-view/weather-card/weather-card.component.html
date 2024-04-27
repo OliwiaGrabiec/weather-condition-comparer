@@ -1,41 +1,39 @@
-@if(cityWeather(); as cityWeather){ @if(index();as index){
 <div class="card-box">
   <div class="main-con">
     <img
       src="{{
-        'http://openweathermap.org/img/wn/' + cityWeather.icon + '@2x.png'
+        'http://openweathermap.org/img/wn/' + cityWeather().icon + '@2x.png'
       }}"
       alt="Weather icon"
       class="card-box__img"
     />
 
     <div class="text-inside">
-      <span>{{
+      <span class="temp-main">{{
         isCel()
-          ? cityWeather.temp.toFixed(0)
-          : ((cityWeather.temp * 9) / 5 + 32).toFixed(0)
+          ? cityWeather().temp.toFixed(0) + "°C"
+          : ((cityWeather().temp * 9) / 5 + 32).toFixed(0) + "°F"
       }}</span>
-      <div>
+      <div class="temp-under">
         <span>
           {{
             "H: " +
               (isCel()
-                ? cityWeather.temp_max.toFixed(0)
-                : ((cityWeather.temp_max * 9) / 5 + 32).toFixed(0))
+                ? cityWeather().temp_max.toFixed(0) + "°C"
+                : ((cityWeather().temp_max * 9) / 5 + 32).toFixed(0) + "°F")
           }}</span
         >
         <span>
           {{
             "L: " +
               (isCel()
-                ? cityWeather.temp_min.toFixed(0)
-                : ((cityWeather.temp_min * 9) / 5 + 32).toFixed(0))
+                ? cityWeather().temp_min.toFixed(0) + "°C"
+                : ((cityWeather().temp_min * 9) / 5 + 32).toFixed(0) + "°F")
           }}</span
         >
       </div>
-      <span>{{ cityWeather.name }}</span>
+      <span class="city-name">{{ cityWeather().name }}</span>
     </div>
   </div>
-  <button class="delete-btn" (click)="deleteCity(index)">usun</button>
+  <button class="delete-btn" (click)="deleteCity(index())">usun</button>
 </div>
-} }

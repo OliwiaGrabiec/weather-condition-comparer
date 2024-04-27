@@ -1,12 +1,22 @@
 :host {
-  display: block;
-  max-width: 2000px;
-  top: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  top: 0;
   z-index: 2;
   position: sticky;
-  background-color: orange;
-
+  background-image: linear-gradient(
+    to right,
+    rgb(163, 102, 255),
+    rgb(72, 0, 255)
+  );
+  border-bottom-left-radius: 4rem;
   .title {
     padding: 20px 10px;
+    color: white;
+  }
+  .img {
+    margin-left: 3rem;
+    margin-right: 1rem;
   }
 }

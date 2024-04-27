@@ -13,7 +13,6 @@ import { ValueAccessorBase } from "@app/abstract/value-accesor.base";
   selector: "app-input",
   templateUrl: "input.component.html",
   styleUrl: "input.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [CommonModule],
 })
