@@ -21,7 +21,7 @@ export class ErrorHandlerService implements ErrorHandler {
   private procedures(error: CustomError): void {
     if (!(error instanceof CustomError)) {
       console.log(`Error`, error);
-      this.messageHandler.errorMessage = "Błąd serwera";
+      this.messageHandler.errorMessage = "Server error";
       return;
     }
 
@@ -37,6 +37,5 @@ export class ErrorHandlerService implements ErrorHandler {
         break;
       }
     }
-    // do something with the exception
   }
 }

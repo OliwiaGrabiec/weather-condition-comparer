@@ -47,7 +47,7 @@ export class CoordsStoreService {
     return this.api.getCoordinatesOf$(cityName).pipe(
       tap((coords) => {
         if (coords.length < 1) {
-          throw new CustomError("USER", "Wpisane miasto nie istnieje");
+          throw new CustomError("USER", "The entered city does not exist");
         }
 
         // TODO: check duplicates

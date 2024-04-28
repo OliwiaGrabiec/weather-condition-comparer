@@ -1,11 +1,11 @@
 :host {
-  display: block;
+  display: flex;
+  justify-content: center;
 
   .snackbar {
     display: block;
     position: fixed;
     bottom: 0;
-    left: calc(50% - 120px);
     padding: 15px 30px;
     border-radius: 10px;
     background: rgb(72, 0, 255);
