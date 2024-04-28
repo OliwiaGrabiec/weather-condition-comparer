@@ -53,6 +53,11 @@ export class LandingViewCompnent {
     this.isCel = cel;
   }
   protected save(): void {
+    if (this.cityNameControl.status === "INVALID") {
+      this.cityNameControl.markAsTouched();
+      return;
+    }
+
     this.coordsStore
       .setCoordBy$(this.cityNameControl.value)
       .subscribe(() => this.cityNameControl.reset(""));

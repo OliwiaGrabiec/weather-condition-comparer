@@ -31,6 +31,10 @@
 
   .icon {
     margin-right: 5px;
+
+    &--clicable {
+      cursor: pointer;
+    }
   }
   .error {
     position: absolute;

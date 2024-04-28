@@ -13,6 +13,7 @@
     width="28"
     height="28"
     class="icon"
+    [ngClass]="{ 'icon--clicable': onIconClick.observed }"
     (click)="onIconClick.emit($event)"
   />
   <span *ngIf="isInvalid" class="error">
