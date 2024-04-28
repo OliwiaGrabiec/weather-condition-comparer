@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  .toggleSwitch {
+    display: inline-block;
+    position: relative;
+    overflow: visible;
+    padding: 0;
+    cursor: pointer;
+    width: 150px;
+    border: 2px solid rgb(163, 102, 255);
+    border-radius: 10px;
+    height: 34px;
+    user-select: none;
+  }
+
+  .toggleSwitch > .switchContainer {
+    position: absolute;
+    display: flex;
+    width: 100%;
+  }
+
+  .toggleSwitch > .switchContainer > span {
+    flex: 1;
+    font-size: 0.9em;
+    text-align: center;
+    line-height: 34px;
+  }
+
+  .toggleSwitch > .switchContainer > span.active {
+    background-color: rgb(163, 102, 255);
+    border-radius: 10px;
+    color: white;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}

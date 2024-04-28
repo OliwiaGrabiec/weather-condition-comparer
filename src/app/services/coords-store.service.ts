@@ -33,7 +33,7 @@ export class CoordsStoreService {
         CoordsStoreService.STORAGE_KEY
       );
       if (coords === null || !Array.isArray(coords)) {
-        throw "Wrong type of coords data";
+        throw "Wrong type of coords data, or empty storage";
       }
 
       this.coordsStore$.next(coords);
@@ -64,16 +64,18 @@ export class CoordsStoreService {
     this.storage.set(CoordsStoreService.STORAGE_KEY, this.coordsStore$.value);
   }
 
-  public deleteCoordBy(index: number): void {
+  public deleteCoordBy(id: CoordStore["id"]): void {
     const indexCoordToDelete = this.coordsStore$.value.findIndex(
-      (_, indexCoord) => index === indexCoord
+      (coord) => id === coord.id
     );
+
     if (indexCoordToDelete === -1) {
-      console.error(`Can't find coord on index: ${index}`);
+      console.error(`Can't find coord with id: ${id}`);
       return;
     }
 
     this.removeCoordFromStore(indexCoordToDelete);
+    console.log(this.coordsStore$);
   }
 
   private get generatedId(): number {

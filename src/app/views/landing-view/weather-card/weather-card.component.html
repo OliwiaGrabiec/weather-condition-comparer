@@ -35,5 +35,7 @@
       <span class="city-name">{{ cityWeather().name }}</span>
     </div>
   </div>
-  <button class="delete-btn" (click)="deleteCity(index())">usun</button>
+  <button class="delete-btn" (click)="deleteCityBy(cityWeather().id)">
+    usun
+  </button>
 </div>

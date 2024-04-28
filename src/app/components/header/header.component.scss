@@ -1,9 +1,11 @@
+@use "variables/layers" as *;
+
 :host {
   display: flex;
   flex-direction: row;
   align-items: center;
   top: 0;
-  z-index: 2;
+  z-index: getLayerOf("sticky");
   position: sticky;
   background-image: linear-gradient(
     to right,

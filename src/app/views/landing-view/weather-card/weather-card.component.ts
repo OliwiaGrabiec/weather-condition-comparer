@@ -23,7 +23,7 @@ export class WeatherCardComponent {
 
   constructor(private readonly coordsStore: CoordsStoreService) {}
 
-  protected deleteCity(index: number) {
-    this.coordsStore.deleteCoordBy(index);
+  protected deleteCityBy(id: CityWeather["id"]): void {
+    this.coordsStore.deleteCoordBy(id);
   }
 }

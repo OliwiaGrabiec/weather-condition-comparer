@@ -1,0 +1,10 @@
+<label class="toggleSwitch">
+  <span class="switchContainer">
+    <span (click)="isCelc()" class="left-span" [ngClass]="{ active: isCel }"
+      >°C</span
+    >
+    <span (click)="isFahs()" class="right-span" [ngClass]="{ active: !isCel }"
+      >°F</span
+    >
+  </span>
+</label>

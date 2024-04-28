@@ -10,14 +10,13 @@ import { CoordStore, CoordsStoreService } from "./coords-store.service";
 export interface CityWeather extends CityWeatherMainData {
   id: number;
   name: string;
-  // weather: CityWeatherIcon[];
   icon: CityWeatherIcon["icon"];
 }
 
 @Injectable({ providedIn: "root" })
 export class CityWeatherStoreService {
   private readonly cityWeatherStore$ = new BehaviorSubject<CityWeather[]>([]);
-  private readonly cityWeatherStoreFiltered$ = new BehaviorSubject<
+  private readonly cityWeatherFilteredStore$ = new BehaviorSubject<
     CityWeather[]
   >([]);
   constructor(
@@ -69,41 +68,37 @@ export class CityWeatherStoreService {
         }
 
         this.cityWeatherStore$.value.splice(cityWeatherIndex, 1);
+        this.cityWeatherFilteredStore$.next([...this.cityWeatherStore$.value]);
       })
     );
   }
 
   public sortWeatherByTemp(ascending: boolean): void {
-    const soredtab = this.cityWeatherStore$.value.sort((a, b) => {
+    this.cityWeatherFilteredStore$.value.sort((a, b) => {
       return ascending ? a.temp - b.temp : b.temp - a.temp;
     });
-    this.cityWeatherStore$.next([...this.cityWeatherStore$.value]);
+
+    this.cityWeatherFilteredStore$.next([
+      ...this.cityWeatherFilteredStore$.value,
+    ]);
   }
 
   public filterTemp(startTemp: number, endTemp: number): void {
-    // Pobierz oryginalne dane z cityWeatherStore
-    const cityWeatherData = this.cityWeatherStore$.value;
+    const cityWeatherData = [...this.cityWeatherStore$.value];
 
-    // Stwórz nową tablicę, zawierającą tylko dane, których temperatura mieści się w przedziale
-    const filteredData = cityWeatherData.filter((data) => {
-      const temperature = data.temp;
-      return temperature >= startTemp && temperature <= endTemp;
-    });
+    const filteredData = cityWeatherData.filter(
+      ({ temp }) => temp >= startTemp && temp <= endTemp
+    );
 
-    // Aktualizuj cityWeatherStoreFiltered z nową tablicą danych
-    this.cityWeatherStoreFiltered$.next(filteredData);
-
-    // Subskrybuj do zmian w cityWeatherStoreFiltered i zapisz je do cityWeatherStore
-    this.cityWeatherStoreFiltered$.subscribe((filteredData) => {
-      this.cityWeatherStore$.next(filteredData);
-    });
+    this.cityWeatherFilteredStore$.next(filteredData);
   }
 
   public set cityWeather(cityWeather: CityWeather) {
     this.cityWeatherStore$.next([...this.cityWeatherStore$.value, cityWeather]);
+    this.cityWeatherFilteredStore$.next([...this.cityWeatherStore$.value]);
   }
 
   public get cityWeatherList$() {
-    return this.cityWeatherStore$.asObservable();
+    return this.cityWeatherFilteredStore$.asObservable();
   }
 }

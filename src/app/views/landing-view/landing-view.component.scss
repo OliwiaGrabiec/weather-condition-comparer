@@ -11,57 +11,18 @@
     padding: 0px 5px;
   }
 
-  .btn {
-    background-color: rgb(217, 201, 242);
-  }
-
-  .btn-container {
-    margin-bottom: 10px;
-  }
-
-  .main-container {
-    background-color: orangered;
-    height: 50px;
-    margin-bottom: 10px;
-  }
-  .container {
-    border-radius: 10px;
-    background-color: white;
-  }
-
-  .toggleSwitch {
-    display: inline-block;
-    position: relative;
-    overflow: visible;
-    padding: 0;
-    cursor: pointer;
-    width: 200px;
-    border: 1px solid rgb(163, 102, 255);
-    border-radius: 10px;
-    height: 34px;
-    user-select: none;
-  }
-
-  .toggleSwitch > .switchContainer {
-    position: absolute;
+  .button-container {
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
   }
-
-  .toggleSwitch > .switchContainer > span {
-    flex: 1;
-    font-size: 0.9em;
-    text-align: center;
-    line-height: 34px;
-  }
-
-  .toggleSwitch > .switchContainer > span.active {
-    background-color: rgb(163, 102, 255);
-    border-radius: 10px;
-    color: white;
-  }
-
-  * {
-    -webkit-tap-highlight-color: transparent;
+  .hej {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
 }

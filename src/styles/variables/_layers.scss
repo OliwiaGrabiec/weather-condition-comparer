@@ -1,0 +1,16 @@
+@use "sass:map";
+
+$-layers: (
+  "under": -1,
+  "content": 1,
+  "sticky": 2,
+);
+
+@function getLayerOf($name) {
+  @if map-has-key($-layers, $name) {
+    @return map.get($-layers, $name);
+  }
+
+  @error "Layer '#{$name} does not exist'";
+  @return null;
+}

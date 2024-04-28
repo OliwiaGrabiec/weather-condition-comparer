@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  border: 2px solid rgb(163, 102, 255);
+  border-radius: 10px;
+  padding: 5.5px 14px;
+  font-size: 0.9em;
+  cursor: pointer;
+  .container {
+    display: flex;
+  }
+
+  .icon-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+  }
+
+  .icon {
+    width: 8px;
+    height: 8px;
+    &_down {
+      transform: rotate(180deg);
+    }
+  }
+}

@@ -1,0 +1,11 @@
+:host {
+  display: block;
+
+  .selected-temp {
+    display: flex;
+    justify-content: space-between;
+  }
+  mat-slider {
+    width: 300px;
+  }
+}
