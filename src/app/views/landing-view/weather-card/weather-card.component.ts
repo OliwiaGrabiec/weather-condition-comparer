@@ -7,6 +7,7 @@ import {
 } from "@angular/core";
 import { CoordsStoreService } from "@app/services/coords-store.service";
 import { CityWeather } from "../../../services/city-weather-store.service";
+import { TempConventerPipe } from "@app/pipes/temp-converter.pipe";
 
 @Component({
   selector: "app-weather-card",
@@ -14,7 +15,7 @@ import { CityWeather } from "../../../services/city-weather-store.service";
   styleUrl: "weather-card.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TempConventerPipe],
 })
 export class WeatherCardComponent {
   public cityWeather = input.required<CityWeather>();

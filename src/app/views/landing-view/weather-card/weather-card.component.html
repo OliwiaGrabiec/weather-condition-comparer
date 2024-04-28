@@ -10,27 +10,11 @@
 
     <div class="text-inside">
       <span class="temp-main">{{
-        isCel()
-          ? cityWeather().temp.toFixed(0) + "°C"
-          : ((cityWeather().temp * 9) / 5 + 32).toFixed(0) + "°F"
+        cityWeather().temp | tempConventer : isCel()
       }}</span>
       <div class="temp-under">
-        <span>
-          {{
-            "H: " +
-              (isCel()
-                ? cityWeather().temp_max.toFixed(0) + "°C"
-                : ((cityWeather().temp_max * 9) / 5 + 32).toFixed(0) + "°F")
-          }}</span
-        >
-        <span>
-          {{
-            "L: " +
-              (isCel()
-                ? cityWeather().temp_min.toFixed(0) + "°C"
-                : ((cityWeather().temp_min * 9) / 5 + 32).toFixed(0) + "°F")
-          }}</span
-        >
+        <span> H: {{ cityWeather().temp_max | tempConventer : isCel() }}</span>
+        <span> L: {{ cityWeather().temp_min | tempConventer : isCel() }}</span>
       </div>
       <span class="city-name">{{ cityWeather().name }}</span>
     </div>

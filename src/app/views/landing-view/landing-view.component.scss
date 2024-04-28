@@ -13,16 +13,11 @@
 
   .button-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-  .hej {
-    display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    gap: 1rem;
+    align-items: self-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
   }
 }

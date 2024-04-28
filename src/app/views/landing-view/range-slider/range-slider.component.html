@@ -13,16 +13,6 @@
   />
 </mat-slider>
 <div class="selected-temp">
-  <label
-    >{{
-      isCel()
-        ? startTemp.toFixed(0) + "°C"
-        : ((startTemp * 9) / 5 + 32).toFixed(0) + "°F"
-    }}
-  </label>
-  <label>{{
-    isCel()
-      ? endTemp.toFixed(0) + "°C"
-      : ((endTemp * 9) / 5 + 32).toFixed(0) + "°F"
-  }}</label>
+  <label>{{ startTemp | tempConventer : isCel() }} </label>
+  <label>{{ endTemp | tempConventer : isCel() }}</label>
 </div>

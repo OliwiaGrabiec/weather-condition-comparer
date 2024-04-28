@@ -1,16 +1,14 @@
 :host {
-  display: block;
-  border: 2px solid rgb(163, 102, 255);
+  display: flex;
+  align-items: center;
+  outline: 2px solid rgb(163, 102, 255);
   border-radius: 10px;
   padding: 0.55rem 1.4rem;
   font-size: 0.9em;
   cursor: pointer;
-  .container {
-    display: flex;
-  }
 
   .icon-container {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     margin-left: 1rem;
   }

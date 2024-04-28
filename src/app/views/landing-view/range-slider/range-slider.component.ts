@@ -3,11 +3,12 @@ import { ChangeDetectionStrategy, Component, input } from "@angular/core";
 import { MatSliderModule } from "@angular/material/slider";
 import { FormsModule } from "@angular/forms";
 import { CityWeatherStoreService } from "@app/services/city-weather-store.service";
+import { TempConventerPipe } from "@app/pipes/temp-converter.pipe";
 
 @Component({
   selector: "app-range-slider",
   standalone: true,
-  imports: [CommonModule, MatSliderModule, FormsModule],
+  imports: [CommonModule, MatSliderModule, FormsModule, TempConventerPipe],
   templateUrl: "./range-slider.component.html",
   styleUrl: "./range-slider.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
