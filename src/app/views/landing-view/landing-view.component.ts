@@ -10,6 +10,8 @@ import {
 } from "../../services/city-weather-store.service";
 import { CoordsStoreService } from "../../services/coords-store.service";
 import { WeatherCardComponent } from "./weather-card/weather-card.component";
+import { MatSliderModule } from "@angular/material/slider";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: "app-landing-view",
@@ -17,15 +19,19 @@ import { WeatherCardComponent } from "./weather-card/weather-card.component";
   imports: [
     CommonModule,
     RouterOutlet,
+    MatSliderModule,
     ReactiveFormsModule,
     WeatherCardComponent,
     InputComponent,
+    FormsModule,
   ],
   templateUrl: "./landing-view.component.html",
   styleUrl: "./landing-view.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LandingViewCompnent {
+  protected startTemp: number = -30;
+  protected endTemp: number = 50;
   protected isCel: boolean = true;
   protected readonly cityNameControl = new FormControl<string>("", {
     nonNullable: true,
@@ -39,8 +45,12 @@ export class LandingViewCompnent {
     this.cityWeatherList$ = this.cityWeatherStore.cityWeatherList$;
   }
 
-  public sortByTemperature(ascending: boolean) {
+  public sortByTemperature(ascending: boolean): void {
     this.cityWeatherStore.sortWeatherByTemp(ascending);
+  }
+
+  public filterTemp(): void {
+    this.cityWeatherStore.filterTemp(this.startTemp, this.endTemp);
   }
 
   protected save(): void {

@@ -17,7 +17,9 @@ export interface CityWeather extends CityWeatherMainData {
 @Injectable({ providedIn: "root" })
 export class CityWeatherStoreService {
   private readonly cityWeatherStore$ = new BehaviorSubject<CityWeather[]>([]);
-
+  private readonly cityWeatherStoreFiltered$ = new BehaviorSubject<
+    CityWeather[]
+  >([]);
   constructor(
     private readonly coordsStore: CoordsStoreService,
     private readonly api: WeatherApiService
@@ -75,8 +77,26 @@ export class CityWeatherStoreService {
     const soredtab = this.cityWeatherStore$.value.sort((a, b) => {
       return ascending ? a.temp - b.temp : b.temp - a.temp;
     });
-    console.log(this.cityWeatherStore$.value);
     this.cityWeatherStore$.next([...this.cityWeatherStore$.value]);
+  }
+
+  public filterTemp(startTemp: number, endTemp: number): void {
+    // Pobierz oryginalne dane z cityWeatherStore
+    const cityWeatherData = this.cityWeatherStore$.value;
+
+    // Stwórz nową tablicę, zawierającą tylko dane, których temperatura mieści się w przedziale
+    const filteredData = cityWeatherData.filter((data) => {
+      const temperature = data.temp;
+      return temperature >= startTemp && temperature <= endTemp;
+    });
+
+    // Aktualizuj cityWeatherStoreFiltered z nową tablicą danych
+    this.cityWeatherStoreFiltered$.next(filteredData);
+
+    // Subskrybuj do zmian w cityWeatherStoreFiltered i zapisz je do cityWeatherStore
+    this.cityWeatherStoreFiltered$.subscribe((filteredData) => {
+      this.cityWeatherStore$.next(filteredData);
+    });
   }
 
   public set cityWeather(cityWeather: CityWeather) {

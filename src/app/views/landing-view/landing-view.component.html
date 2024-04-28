@@ -2,24 +2,43 @@
   <app-input [formControl]="cityNameControl"></app-input>
 </form>
 
-<label class="toggleSwitch nolabel">
-  <input type="checkbox" checked />
-  <a></a>
-  <span>
-    <span (click)="isCelc()" class="left-span">Enabled</span>
-    <span (click)="isFahs()" class="right-span">Disabled</span>
+<label class="toggleSwitch">
+  <span class="switchContainer">
+    <span (click)="isCelc()" class="left-span" [ngClass]="{ active: isCel }"
+      >°C</span
+    >
+    <span (click)="isFahs()" class="right-span" [ngClass]="{ active: !isCel }"
+      >°F</span
+    >
   </span>
 </label>
 
-<div class="btn-container">
+<!-- <div class="btn-container">
   <button (click)="isCelc()" class="btn">°C</button>
   <button (click)="isFahs()" class="btn">°F</button>
-</div>
+</div> -->
 
 <div class="btn-container">
-  <button (click)="sortByTemperature(true)">Sort Ascending</button>
-  <button (click)="sortByTemperature(false)">Sort Descending</button>
+  <span (click)="sortByTemperature(true)">Sort Ascending</span>
+  <span (click)="sortByTemperature(false)">Sort Descending</span>
 </div>
+
+<mat-slider min="-30" step="1" max="50" color="accent">
+  <input
+    value="-30"
+    matSliderStartThumb
+    [(ngModel)]="startTemp"
+    (ngModelChange)="filterTemp()"
+  />
+  <input
+    value="50"
+    matSliderEndThumb
+    [(ngModel)]="endTemp"
+    (ngModelChange)="filterTemp()"
+  />
+</mat-slider>
+<label>start: {{ startTemp }} </label>
+<label>end: {{ endTemp }}</label>
 
 <div class="card-container">
   @for(cityWeather of cityWeatherList$ | async; track cityWeather; let index =

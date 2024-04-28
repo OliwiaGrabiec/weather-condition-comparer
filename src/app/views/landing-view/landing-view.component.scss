@@ -42,62 +42,26 @@
     user-select: none;
   }
 
-  .toggleSwitch input {
+  .toggleSwitch > .switchContainer {
     position: absolute;
-    opacity: 0;
-    z-index: 1;
+    display: flex;
+    width: 100%;
   }
 
-  .toggleSwitch > span span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 5;
-    display: block;
-    width: 50%;
+  .toggleSwitch > .switchContainer > span {
+    flex: 1;
     font-size: 0.9em;
-    width: auto;
-    left: 0;
-    top: -1px;
-    opacity: 1;
     text-align: center;
     line-height: 34px;
   }
-  .toggleSwitch a {
-    position: absolute;
-    right: 50%;
-    z-index: 4;
-    display: block;
-    top: 3px;
-    bottom: 3px;
-    padding: 0;
-    left: 3px;
-    width: 50%;
-    background-color: rgb(144, 73, 249);
-    border-radius: 4px;
-  }
-  .toggleSwitch > span span:first-of-type {
-    color: #fff;
-    opacity: 1;
-    left: 0;
-    margin: 0;
-    width: 50%;
-  }
-  .toggleSwitch > span span:last-of-type {
-    left: auto;
-    right: 0;
-    color: #999;
-    margin: 0;
-    width: 50%;
+
+  .toggleSwitch > .switchContainer > span.active {
+    background-color: rgb(163, 102, 255);
+    border-radius: 10px;
+    color: white;
   }
 
-  .toggleSwitch input:checked ~ a {
-    left: calc(50% - 3px);
-  }
-  .toggleSwitch input:checked ~ span span:first-of-type {
-    color: #999;
-  }
-  .toggleSwitch input:checked ~ span span:last-of-type {
-    color: #fff;
+  * {
+    -webkit-tap-highlight-color: transparent;
   }
 }
