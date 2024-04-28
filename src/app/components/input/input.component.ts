@@ -3,6 +3,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  EventEmitter,
+  Output,
   Self,
   ViewChild,
 } from "@angular/core";
@@ -17,7 +19,8 @@ import { ValueAccessorBase } from "@app/abstract/value-accesor.base";
   imports: [CommonModule],
 })
 export class InputComponent extends ValueAccessorBase<string> {
-  @ViewChild("input") inputElement: ElementRef;
+  @ViewChild("input") protected readonly inputElement: ElementRef;
+  @Output() protected readonly onIconClick = new EventEmitter<Event>();
 
   constructor(@Self() ngControl: NgControl) {
     super(ngControl);

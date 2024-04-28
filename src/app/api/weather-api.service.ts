@@ -5,7 +5,7 @@ import {
   CoordinatesDirectByCityNameResponse,
 } from "@app/models/weather.model";
 import { Coord } from "@app/services/coords-store.service";
-import { environment } from "../../enviroments/environment";
+import { environment } from "../../environments/environment";
 import { ApiService } from "./api.service";
 
 @Injectable({ providedIn: "root" })

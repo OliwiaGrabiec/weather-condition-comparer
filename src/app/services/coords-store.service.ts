@@ -38,7 +38,6 @@ export class CoordsStoreService {
 
       this.coordsStore$.next(coords);
     } catch (err) {
-      // todo: to handle with info for user
       console.error(err);
     }
   }
@@ -52,7 +51,6 @@ export class CoordsStoreService {
 
         // TODO: check duplicates
         this.coords = { lat: coords[0].lat, lon: coords[0].lon };
-        console.log(this.coords);
       })
     );
   }
@@ -75,7 +73,6 @@ export class CoordsStoreService {
     }
 
     this.removeCoordFromStore(indexCoordToDelete);
-    console.log(this.coordsStore$);
   }
 
   private get generatedId(): number {
@@ -83,7 +80,6 @@ export class CoordsStoreService {
   }
 
   private removeCoordFromStore(indexCoordToDelete: number): void {
-    console.log({ indexCoordToDelete });
     this.removeCoordEventStore$.next(
       this.coordsStore$.value[indexCoordToDelete].id
     );

@@ -1,5 +1,5 @@
 <form class="form" (submit)="$event.preventDefault(); save()">
-  <app-input [formControl]="cityNameControl"></app-input>
+  <app-input [formControl]="cityNameControl" (onIconClick)="save()"></app-input>
 </form>
 <div class="button-container">
   <app-toggle-button (isCelChange)="changeUnit($event)"></app-toggle-button>

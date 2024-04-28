@@ -1,5 +1,9 @@
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+} from "@angular/core";
 import { CityWeatherStoreService } from "@app/services/city-weather-store.service";
 import { MatIconModule } from "@angular/material/icon";
 
@@ -13,10 +17,11 @@ import { MatIconModule } from "@angular/material/icon";
 })
 export class SortButtonCompnent {
   protected ascending: boolean = true;
-  constructor(private readonly cityWeatherStore: CityWeatherStoreService) {}
 
-  public sortByTemperature(): void {
+  @HostListener("click") onClick(): void {
     this.ascending = !this.ascending;
     this.cityWeatherStore.sortWeatherByTemp(this.ascending);
   }
+
+  constructor(private readonly cityWeatherStore: CityWeatherStoreService) {}
 }

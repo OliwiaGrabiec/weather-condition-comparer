@@ -20,7 +20,7 @@ export class ErrorHandlerService implements ErrorHandler {
 
   private procedures(error: CustomError): void {
     if (!(error instanceof CustomError)) {
-      console.log(`Error`, error);
+      console.error(`Error`, error);
       this.messageHandler.errorMessage = "Server error";
       return;
     }

@@ -22,7 +22,7 @@
     "baseUrl": "./",
     "paths": {
       "@app/*": ["src/app/*"],
-      "@env/*": ["src/enviroments/*"]
+      "@env/*": ["src/environments/*"]
     },
     "strictPropertyInitialization": false
   },
