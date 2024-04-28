@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { FormControl, ReactiveFormsModule, Validators } from "@angular/forms";
 import { RouterOutlet } from "@angular/router";
 import { InputComponent } from "@app/components/input/input.component";
 import { Observable, of, tap } from "rxjs";
@@ -39,6 +39,7 @@ export class LandingViewCompnent {
   protected isCel: boolean = true;
   protected readonly cityNameControl = new FormControl<string>("", {
     nonNullable: true,
+    validators: [Validators.required, Validators.pattern("[A-Za-zs]+")],
   });
   protected cityWeatherList$: Observable<CityWeather[]>;
 

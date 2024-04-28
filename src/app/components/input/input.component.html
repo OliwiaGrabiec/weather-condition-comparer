@@ -14,4 +14,7 @@
     height="28"
     class="icon"
   />
+  <span *ngIf="isInvalid" class="error">
+    {{ getErrorMessages() }}
+  </span>
 </div>

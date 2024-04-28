@@ -3,7 +3,8 @@ export interface ErrorMessages {
 }
 
 const messages: ErrorMessages = {
-  pattern: "formErrors.pattern",
+  pattern: "bad format",
+  required: "city required",
 };
 
 export const getErrorMessage: (

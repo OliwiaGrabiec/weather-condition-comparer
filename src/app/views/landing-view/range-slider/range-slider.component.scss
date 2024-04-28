@@ -6,6 +6,12 @@
     justify-content: space-between;
   }
   mat-slider {
-    width: 300px;
+    width: 200px;
+  }
+
+  @media (min-width: 350px) {
+    mat-slider {
+      width: 300px;
+    }
   }
 }
