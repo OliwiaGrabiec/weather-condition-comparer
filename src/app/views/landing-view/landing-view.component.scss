@@ -1,10 +1,10 @@
 :host {
   display: block;
-  margin-top: 50px;
+  margin-top: 5rem;
   height: 100%;
 
   .form {
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
   }
 
   .card-container {
@@ -16,13 +16,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
   }
   .hej {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 1rem;
   }
 }
