@@ -39,7 +39,7 @@ export class LandingViewCompnent {
   protected isCel: boolean = true;
   protected readonly cityNameControl = new FormControl<string>("", {
     nonNullable: true,
-    validators: [Validators.required, Validators.pattern("[A-Za-zs]+")],
+    validators: [Validators.required],
   });
   protected cityWeatherList$: Observable<CityWeather[]>;
 
